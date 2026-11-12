@@ -1,0 +1,14 @@
+pluginManagement {
+	repositories {
+		// 试试这个专门代理 Fabric 的仓库
+		maven { url 'https://repository.hanbings.io/proxy' }
+		maven { url 'https://maven.fastmirror.net/repositories/minecraft' }
+		maven { url 'https://bmclapi2.bangbang93.com/maven/' }
+		maven {
+			name = 'Fabric'
+			url = 'https://maven.fabricmc.net/'
+		}
+		mavenCentral()
+		gradlePluginPortal()
+	}
+}
