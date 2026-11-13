@@ -1,0 +1,20 @@
+﻿{
+	"textures": {
+		"side": "csmetro:block/psd_side_light",
+		"black": "csmetro:block/black",
+		"particle": "csmetro:block/door_tile_entity_migration/apg_door_top"
+	},
+	"elements": [
+		{
+			"from": [ 1, 0, 0 ],
+			"to": [ 2, 8, 16 ],
+			"faces": {
+				"up": { "uv": [ 16, 8, 0, 8.1 ], "texture": "#particle", "rotation": 270 },
+				"east": { "uv": [ 16, 8, 0, 16 ], "texture": "#particle" },
+				"west": { "uv": [ 0, 8, 16, 16 ], "texture": "#particle" },
+				"north": { "texture": "#side" },
+				"south": { "texture": "#black" }
+			}
+		}
+	]
+}

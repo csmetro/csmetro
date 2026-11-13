@@ -1,0 +1,10 @@
+﻿{
+	"parent": "csmetro:block/psd_glass_end_left_middle_base",
+	"textures": {
+		"bottom": "csmetro:block/black",
+		"top": "csmetro:block/transparent",
+		"front": "csmetro:block/psd_glass_bottom_1",
+		"back": "csmetro:block/psd_glass_bottom_back_1"
+	}
+}
+

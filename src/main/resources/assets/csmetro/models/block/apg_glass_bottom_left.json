@@ -1,0 +1,11 @@
+﻿{
+	"parent": "csmetro:block/apg_glass_left_base",
+	"textures": {
+		"fronttop": "csmetro:block/transparent",
+		"sidetop": "csmetro:block/transparent",
+		"frontbottom": "csmetro:block/apg_glass_bottom",
+		"sidebottom": "csmetro:block/psd_side_light",
+		"sidetriangle": "csmetro:block/transparent"
+	}
+}
+

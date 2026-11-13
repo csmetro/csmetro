@@ -1,15 +1,14 @@
 package org.csmetro;
 
 import net.fabricmc.api.ModInitializer;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
+import org.csmetro.block.ModBlockEntities;
+import org.csmetro.block.ModBlocks;
 
 public class ExampleMod implements ModInitializer {
-	public static final String MOD_ID = "csmetro";
-	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
-
 	@Override
 	public void onInitialize() {
-		LOGGER.info("Hello Fabric world!");
+		ModBlocks.register();        // 1. 注册方块
+		ModBlockEntities.register(); // 2. 注册实体
 	}
 }

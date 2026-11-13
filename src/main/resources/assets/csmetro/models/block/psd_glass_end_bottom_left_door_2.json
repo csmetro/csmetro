@@ -1,0 +1,11 @@
+﻿{
+	"parent": "csmetro:block/psd_glass_end_left_door_base",
+	"textures": {
+		"bottom": "csmetro:block/black",
+		"top": "csmetro:block/transparent",
+		"front": "csmetro:block/psd_glass_bottom_2",
+		"back": "csmetro:block/psd_glass_bottom_back_2",
+		"red": "csmetro:block/psd_red_bottom"
+	}
+}
+

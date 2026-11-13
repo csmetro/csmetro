@@ -1,0 +1,8 @@
+﻿{
+	"parent": "csmetro:block/psd_glass_end_left_air_base",
+	"textures": {
+		"front": "csmetro:block/psd_glass_diagonal_top_1",
+		"back": "csmetro:block/psd_glass_diagonal_top_back_1"
+	}
+}
+

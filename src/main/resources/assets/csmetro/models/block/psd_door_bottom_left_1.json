@@ -1,0 +1,9 @@
+﻿{
+	"parent": "csmetro:block/door_tile_entity_migration/psd_door_left_base",
+	"textures": {
+		"bottom": "csmetro:block/black",
+		"top": "csmetro:block/transparent",
+		"particle": "csmetro:block/door_tile_entity_migration/psd_door_bottom_1",
+		"back": "csmetro:block/door_tile_entity_migration/psd_door_bottom_back_1"
+	}
+}
