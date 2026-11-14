@@ -22,13 +22,6 @@
 		  	"org.csmetro.client.CSMetroClient"
 		]
 	},
-	"mixins": [
-		"csmetro.mixins.json",
-		{
-			"config": "csmetro.client.mixins.json",
-			"environment": "client"
-		}
-	],
 	"depends": {
 		"fabricloader": ">=0.20.1",
 		"minecraft": "~1.20.1",

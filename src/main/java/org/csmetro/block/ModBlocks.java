@@ -6,7 +6,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import org.csmetro.Util;
+import org.csmetro.CSMetro;
+import org.csmetro.util.Util;
 
 public class ModBlocks {
     public static final Block APG_DOOR = initialize("apg_door", new MyAPGDoor());
@@ -21,10 +22,9 @@ public class ModBlocks {
     public static final Block PSD_TOP = initialize("psd_top", new MyPSDTop());
 
     private static Block initialize(String name, Block block) {
-        ResourceLocation id = new ResourceLocation("csmetro", name);
         BlockItem item = new BlockItem(block, new Item.Properties());
-        Registry.register(BuiltInRegistries.BLOCK, id, block);
-        Registry.register(BuiltInRegistries.ITEM, id, item);
+        Util.register(BuiltInRegistries.BLOCK, name, block);
+        Util.register(BuiltInRegistries.ITEM, name, item);
         if (block instanceof Util.HasItem h) {
             h.setItem(item);
         }
