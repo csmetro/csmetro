@@ -24,5 +24,5 @@ public class ModBlockEntities {
                     new ResourceLocation("csmetro", "psd_top"),
                     BlockEntityType.Builder.of(mtr.block.BlockPSDTop.TileEntityPSDTop::new, ModBlocks.PSD_TOP).build(null));
 
-    public static void register() {}
+    public static void initialize() {}
 }

@@ -16,10 +16,10 @@
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"org.csmetro.ExampleMod"
+          	"org.csmetro.CSMetro"
 		],
 		"client": [
-			"org.csmetro.client.ExampleModClient"
+		  	"org.csmetro.client.CSMetroClient"
 		]
 	},
 	"mixins": [

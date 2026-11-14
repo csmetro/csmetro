@@ -8,7 +8,7 @@ import org.csmetro.block.entity.ModBlockEntities;
 import org.csmetro.block.ModBlocks;
 import mtr.render.RenderPSDTop;
 
-public class ExampleModClient implements ClientModInitializer {
+public class CSMetroClient implements ClientModInitializer {
 	@Override
 	public void onInitializeClient() {
 		BlockEntityRenderers.register(ModBlockEntities.APG_DOOR, ctx -> {

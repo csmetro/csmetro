@@ -9,9 +9,9 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.InteractionResult;
 import org.jetbrains.annotations.NotNull;
 
-public class CsmetroDoorItem extends BlockItem {
+public class DoorItem extends BlockItem {
 
-    public CsmetroDoorItem(Block block, Item.Properties properties) {
+    public DoorItem(Block block, Item.Properties properties) {
         super(block, properties);
     }
 

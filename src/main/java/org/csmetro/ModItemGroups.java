@@ -33,7 +33,7 @@ public class ModItemGroups {
                     .build()
     );
 
-    public static void register() {
-        // 触发类加载
+    public static void initialize() {
+
     }
 }
