@@ -10,15 +10,13 @@ import net.minecraft.world.item.ItemStack;
 import org.csmetro.block.ModBlocks;
 
 public class ModItemGroups {
-
-    // 创建你的专属物品栏
     public static final CreativeModeTab CSMETRO_GROUP = Registry.register(
             BuiltInRegistries.CREATIVE_MODE_TAB,
-            new ResourceLocation("csmetro", "main"),
+            new ResourceLocation(CSMetro.MOD_ID, "main"),
             FabricItemGroup.builder()
-                    .icon(() -> new ItemStack(ModBlocks.APG_DOOR)) // 图标用你的 APG 门
-                    .title(Component.translatable("itemGroup.csmetro.main")) // 标签页名称的翻译键
-                    .displayItems((displayContext, entries) -> {
+                    .icon(() -> new ItemStack(ModBlocks.APG_DOOR))
+                    .title(Component.translatable("itemGroup.csmetro.main"))
+                    .displayItems((_, entries) -> {
                         entries.accept(ModBlocks.APG_DOOR.asItem());
                         entries.accept(ModBlocks.APG_GLASS.asItem());
                         entries.accept(ModBlocks.APG_GLASS_END.asItem());
@@ -34,6 +32,5 @@ public class ModItemGroups {
     );
 
     public static void initialize() {
-
     }
 }

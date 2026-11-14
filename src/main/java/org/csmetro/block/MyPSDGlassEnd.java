@@ -1,24 +1,36 @@
 package org.csmetro.block;
 
+import mtr.block.BlockPSDGlassEnd;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import org.csmetro.Util;
+import org.csmetro.util.Util;
 import org.jetbrains.annotations.NotNull;
 
-public class MyPSDGlassEnd extends mtr.block.BlockPSDGlassEnd implements Util.HasItem {
+public class MyPSDGlassEnd extends BlockPSDGlassEnd implements Util.HasItem {
     private Item item;
+
     public MyPSDGlassEnd(int style) { super(style); }
-    @Override public void setItem(Item item) { this.item = item; }
-    @Override public @NotNull Item asItem() { return item; }
+
+    @Override
+    public void setItem(Item item) {
+        this.item = item;
+    }
+
+    @Override
+    public @NotNull Item asItem() {
+        return item;
+    }
 
     @Override
     public void setPlacedBy(Level world, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack) {
         super.setPlacedBy(world, pos, state, placer, stack);
-        if (world.isClientSide) return;
+        if (world.isClientSide) {
+            return;
+        }
         Util.generateTop(world, pos);
     }
 }

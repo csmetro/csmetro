@@ -1,11 +1,14 @@
-package org.csmetro;
+package org.csmetro.util;
 
 import mtr.block.BlockPSDTop;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Registry;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
+import org.csmetro.CSMetro;
 import org.csmetro.block.ModBlocks;
 
 public class Util {
@@ -25,5 +28,11 @@ public class Util {
 
     public interface HasItem {
         void setItem(Item item);
+    }
+
+    public static <T> T register(Registry<T> registry, String name, T object) {
+        ResourceLocation id = new ResourceLocation(CSMetro.MOD_ID, name);
+        Registry.register(registry, id, object);
+        return object;
     }
 }

@@ -11,15 +11,9 @@ import mtr.render.RenderPSDTop;
 public class CSMetroClient implements ClientModInitializer {
 	@Override
 	public void onInitializeClient() {
-		BlockEntityRenderers.register(ModBlockEntities.APG_DOOR, ctx -> {
-				return new CustomPSDRenderer<>(ctx.getBlockEntityRenderDispatcher(), 2);
-		});
-		BlockEntityRenderers.register(ModBlockEntities.PSD_DOOR, ctx ->
-				new CustomPSDRenderer<>(ctx.getBlockEntityRenderDispatcher(), 0)
-		);
-		BlockEntityRenderers.register(ModBlockEntities.PSD_TOP, ctx ->
-				new RenderPSDTop(ctx.getBlockEntityRenderDispatcher())
-		);
+		BlockEntityRenderers.register(ModBlockEntities.APG_DOOR, ctx -> new CustomPSDRenderer<>(ctx.getBlockEntityRenderDispatcher(), 2));
+		BlockEntityRenderers.register(ModBlockEntities.PSD_DOOR, ctx -> new CustomPSDRenderer<>(ctx.getBlockEntityRenderDispatcher(), 0));
+		BlockEntityRenderers.register(ModBlockEntities.PSD_TOP, ctx -> new RenderPSDTop(ctx.getBlockEntityRenderDispatcher()));
 
 		BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.APG_DOOR, RenderType.cutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.PSD_DOOR_1, RenderType.cutout());
