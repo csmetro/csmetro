@@ -1,0 +1,13 @@
+{
+  "block.csmetro.apg_door": "APG Door",
+  "block.csmetro.apg_glass": "APG Glass",
+  "block.csmetro.apg_glass_end": "APG Glass End",
+  "block.csmetro.psd_door_1": "PSD Door",
+  "block.csmetro.psd_door_2": "PSD Door (Style 2)",
+  "block.csmetro.psd_glass_1": "PSD Glass",
+  "block.csmetro.psd_glass_2": "PSD Glass (Style 2)",
+  "block.csmetro.psd_glass_end_1": "PSD Glass End",
+  "block.csmetro.psd_glass_end_2": "PSD Glass End (Style 2)",
+  "block.csmetro.psd_top": "PSD Top",
+  "itemGroup.csmetro.main": "Changsha Metro"
+}

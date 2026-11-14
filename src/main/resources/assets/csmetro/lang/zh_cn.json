@@ -1,0 +1,13 @@
+{
+  "block.csmetro.apg_door": "自动站台门",
+  "block.csmetro.apg_glass": "自动站台门玻璃",
+  "block.csmetro.apg_glass_end": "自动站台门玻璃末端",
+  "block.csmetro.psd_door_1": "屏蔽门",
+  "block.csmetro.psd_door_2": "屏蔽门（风格2）",
+  "block.csmetro.psd_glass_1": "屏蔽门玻璃",
+  "block.csmetro.psd_glass_2": "屏蔽门玻璃（风格2）",
+  "block.csmetro.psd_glass_end_1": "屏蔽门玻璃末端",
+  "block.csmetro.psd_glass_end_2": "屏蔽门玻璃末端（风格2）",
+  "block.csmetro.psd_top": "屏蔽门顶盖",
+  "itemGroup.csmetro.main": "长沙地铁"
+}
