@@ -1,14 +1,22 @@
 package org.csmetro.block;
 
+import mtr.block.IBlock;
 import mtr.mappings.BlockEntityMapper;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
+import org.csmetro.block.entity.MyAPGDoorEntity;
+import org.csmetro.block.entity.MyPSDDoorEntity;
 
 public class ModBlocks {
     public static final Block APG_DOOR = register("apg_door", new MyAPGDoor());
@@ -33,7 +41,6 @@ public class ModBlocks {
         return block;
     }
 
-    // 所有方块类实现这个接口，用来接收物品实例
     public interface HasItem {
         void setItem(Item item);
     }
@@ -42,9 +49,29 @@ public class ModBlocks {
         private Item item;
         @Override public void setItem(Item item) { this.item = item; }
         @Override public Item asItem() { return item; }
+
         @Override
         public BlockEntityMapper createBlockEntity(BlockPos pos, BlockState state) {
-            return new mtr.block.BlockAPGDoor.TileEntityAPGDoor(pos, state);
+            // 返回你自己的实体！
+            return new MyAPGDoorEntity(pos, state);
+        }
+
+        @Override
+        public void setPlacedBy(Level world, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack) {
+            super.setPlacedBy(world, pos, state, placer, stack);
+            if (world.isClientSide) return;
+
+            Direction sideDir = IBlock.getSideDirection(state);
+            BlockPos sidePos = pos.relative(sideDir);
+
+            if (world.getBlockState(sidePos).isAir()) {
+                BlockState rightLower = state
+                        .setValue(SIDE, EnumSide.RIGHT)
+                        .setValue(HALF, DoubleBlockHalf.LOWER);
+
+                world.setBlock(sidePos, rightLower, 3);
+                world.setBlock(sidePos.above(), rightLower.setValue(HALF, DoubleBlockHalf.UPPER), 3);
+            }
         }
     }
 
@@ -63,11 +90,34 @@ public class ModBlocks {
     public static class MyPSDDoor extends mtr.block.BlockPSDDoor implements HasItem {
         private Item item;
         public MyPSDDoor(int style) { super(style); }
-        @Override public void setItem(Item item) { this.item = item; }
-        @Override public Item asItem() { return item; }
+        @Override public void setItem(Item item) {
+            this.item = item;
+        }
+        @Override public Item asItem() {
+            return item;
+        }
+
         @Override
         public BlockEntityMapper createBlockEntity(BlockPos pos, BlockState state) {
-            return new mtr.block.BlockPSDDoor.TileEntityPSDDoor(0, pos, state);
+            return new MyPSDDoorEntity(pos, state);
+        }
+
+        @Override
+        public void setPlacedBy(Level world, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack) {
+            super.setPlacedBy(world, pos, state, placer, stack);
+            if (world.isClientSide) return;
+
+            Direction sideDir = IBlock.getSideDirection(state);
+            BlockPos sidePos = pos.relative(sideDir);
+
+            if (world.getBlockState(sidePos).isAir()) {
+                BlockState rightLower = state
+                        .setValue(SIDE, EnumSide.RIGHT)
+                        .setValue(HALF, DoubleBlockHalf.LOWER);
+
+                world.setBlock(sidePos, rightLower, 3);
+                world.setBlock(sidePos.above(), rightLower.setValue(HALF, DoubleBlockHalf.UPPER), 3);
+            }
         }
     }
 
@@ -95,7 +145,5 @@ public class ModBlocks {
         }
     }
 
-    public static void register() {
-        // 注册已经在 static final 里完成了，这里留空即可
-    }
+    public static void register() {}
 }

@@ -3,9 +3,7 @@ package org.csmetro.client;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import mtr.MTRClient;
-import mtr.block.BlockPSDAPGDoorBase;
-import mtr.block.BlockPSDAPGDoorBase.TileEntityPSDAPGDoorBase;
-import mtr.block.IBlock;
+import mtr.block.*;
 import mtr.data.IGui;
 import mtr.mappings.BlockEntityRendererMapper;
 import mtr.mappings.ModelDataWrapper;
@@ -24,7 +22,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 
-public class CustomPSDRenderer<T extends TileEntityPSDAPGDoorBase> extends BlockEntityRendererMapper<T> implements IGui, IBlock {
+public class CustomPSDRenderer<T extends BlockPSDAPGDoorBase.TileEntityPSDAPGDoorBase> extends BlockEntityRendererMapper<T> implements IGui, IBlock {
+
     private final int type;
     private static final ModelSingleCube MODEL_PSD = new ModelSingleCube(36, 18, 0, 0, 0, 16, 16, 2);
     private static final ModelSingleCube MODEL_PSD_END_LEFT_1 = new ModelSingleCube(20, 18, 0, 0, 0, 8, 16, 2);
@@ -38,6 +37,8 @@ public class CustomPSDRenderer<T extends TileEntityPSDAPGDoorBase> extends Block
     private static final ModelAPGDoorLight MODEL_APG_LIGHT = new ModelAPGDoorLight();
     private static final ModelSingleCube MODEL_APG_DOOR_LOCKED = new ModelSingleCube(6, 6, 5, 10, 1, 6, 6, 0);
     private static final ModelSingleCube MODEL_PSD_DOOR_LOCKED = new ModelSingleCube(6, 6, 5, 6, 1, 6, 6, 0);
+    private static final ModelSingleCube MODEL_LIFT_LEFT = new ModelSingleCube(28, 18, 0, 0, 0, 12, 16, 2);
+    private static final ModelSingleCube MODEL_LIFT_RIGHT = new ModelSingleCube(28, 18, 4, 0, 0, 12, 16, 2);
 
     public CustomPSDRenderer(BlockEntityRenderDispatcher dispatcher, int type) {
         super(dispatcher);
@@ -47,10 +48,15 @@ public class CustomPSDRenderer<T extends TileEntityPSDAPGDoorBase> extends Block
     @Override
     public void render(T entity, float tickDelta, PoseStack matrices, MultiBufferSource vertexConsumers, int light, int overlay) {
         final Level world = entity.getLevel();
-        if (world == null) return;
+
+        if (world == null) {
+            return;
+        }
 
         final BlockPos pos = entity.getBlockPos();
-        // if (IBlock.getStatePropertySafe(world, pos, BlockPSDAPGDoorBase.TEMP)) return;
+        if (IBlock.getStatePropertySafe(world, pos, BlockPSDAPGDoorBase.TEMP)) {
+            return;
+        }
 
         final Direction facing = IBlock.getStatePropertySafe(world, pos, BlockPSDAPGDoorBase.FACING);
         final boolean side = IBlock.getStatePropertySafe(world, pos, BlockPSDAPGDoorBase.SIDE) == EnumSide.RIGHT;
@@ -89,7 +95,7 @@ public class CustomPSDRenderer<T extends TileEntityPSDAPGDoorBase> extends Block
             case 2:
                 if (half) {
                     final Block block = world.getBlockState(pos.relative(side ? facing.getClockWise() : facing.getCounterClockWise())).getBlock();
-                    if (block instanceof mtr.block.BlockAPGGlass || block instanceof mtr.block.BlockAPGGlassEnd) {
+                    if (block instanceof BlockAPGGlass || block instanceof BlockAPGGlassEnd) {
                         RenderTrains.scheduleRender(new ResourceLocation(String.format("csmetro:textures/block/apg_door_light_%s.png", open > 0 ? "on" : "off")), false, open > 0 ? RenderTrains.QueuedRenderLayer.LIGHT_TRANSLUCENT : RenderTrains.QueuedRenderLayer.EXTERIOR, (matricesNew, vertexConsumer) -> {
                             storedMatrixTransformationsLight.transform(matricesNew);
                             matricesNew.translate(side ? -0.515625 : 0.515625, 0, 0);
@@ -123,25 +129,44 @@ public class CustomPSDRenderer<T extends TileEntityPSDAPGDoorBase> extends Block
                 if (half && !unlocked) {
                     RenderTrains.scheduleRender(new ResourceLocation("csmetro:textures/block/sign/door_not_in_use.png"), false, RenderTrains.QueuedRenderLayer.EXTERIOR, (matricesNew, vertexConsumer) -> {
                         storedMatrixTransformations.transform(matricesNew);
-                        if (end) matricesNew.translate(side ? 0.25 : -0.25, 0, 0);
+                        if (end) {
+                            matricesNew.translate(side ? 0.25 : -0.25, 0, 0);
+                        }
                         MODEL_PSD_DOOR_LOCKED.renderToBuffer(matricesNew, vertexConsumer, light, overlay, 1, 1, 1, 1);
                         matricesNew.popPose();
                     });
                 }
                 break;
             case 2:
-                // 1. 先画门板（正常状态）
                 RenderTrains.scheduleRender(new ResourceLocation(String.format("csmetro:textures/block/apg_door_%s_%s.png", half ? "top" : "bottom", side ? "right" : "left")), false, RenderTrains.QueuedRenderLayer.EXTERIOR, (matricesNew, vertexConsumer) -> {
                     storedMatrixTransformations.transform(matricesNew);
                     (half ? MODEL_APG_TOP : MODEL_APG_BOTTOM).renderToBuffer(matricesNew, vertexConsumer, light, overlay, 1, 1, 1, 1);
                     matricesNew.popPose();
                 });
-
-                // 2. 如果锁定，在门板上叠加标志
                 if (half && !unlocked) {
                     RenderTrains.scheduleRender(new ResourceLocation("csmetro:textures/block/sign/door_not_in_use.png"), false, RenderTrains.QueuedRenderLayer.EXTERIOR, (matricesNew, vertexConsumer) -> {
                         storedMatrixTransformations.transform(matricesNew);
                         MODEL_APG_DOOR_LOCKED.renderToBuffer(matricesNew, vertexConsumer, light, overlay, 1, 1, 1, 1);
+                        matricesNew.popPose();
+                    });
+                }
+                break;
+            case 4:
+                if (IBlock.getStatePropertySafe(world, pos, ITripleBlock.ODD)) {
+                    break;
+                }
+                storedMatrixTransformations.add(matricesNew -> matricesNew.translate(side ? 0.5 : -0.5, 0, 0));
+            case 3:
+                RenderTrains.scheduleRender(new ResourceLocation(String.format("csmetro:textures/block/lift_door_%s_%s_1.png", half ? "top" : "bottom", side ? "right" : "left")), false, RenderTrains.QueuedRenderLayer.EXTERIOR, (matricesNew, vertexConsumer) -> {
+                    storedMatrixTransformations.transform(matricesNew);
+                    (side ? MODEL_LIFT_RIGHT : MODEL_LIFT_LEFT).renderToBuffer(matricesNew, vertexConsumer, light, overlay, 1, 1, 1, 1);
+                    matricesNew.popPose();
+                });
+                if (half && !unlocked) {
+                    RenderTrains.scheduleRender(new ResourceLocation("csmetro:textures/block/sign/door_not_in_use.png"), false, RenderTrains.QueuedRenderLayer.EXTERIOR, (matricesNew, vertexConsumer) -> {
+                        storedMatrixTransformations.transform(matricesNew);
+                        matricesNew.translate(side ? 0.125 : -0.125, 0, 0);
+                        MODEL_PSD_DOOR_LOCKED.renderToBuffer(matricesNew, vertexConsumer, light, overlay, 1, 1, 1, 1);
                         matricesNew.popPose();
                     });
                 }
