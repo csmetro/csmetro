@@ -1,8 +1,8 @@
-{
+﻿{
 	"textures": {
-		"side": "mtr:block/psd_side_light",
-		"black": "mtr:block/black",
-		"particle": "mtr:block/door_tile_entity_migration/apg_door_top"
+		"side": "csmetro:block/psd_side_light",
+		"black": "csmetro:block/black",
+		"particle": "csmetro:block/door_tile_entity_migration/apg_door_top"
 	},
 	"elements": [
 		{

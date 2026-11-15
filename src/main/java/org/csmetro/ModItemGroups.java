@@ -1,5 +1,6 @@
 package org.csmetro;
 
+import mtr.block.BlockTicketBarrier;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -27,6 +28,8 @@ public class ModItemGroups {
                         entries.accept(ModBlocks.PSD_GLASS_END_1.asItem());
                         entries.accept(ModBlocks.PSD_GLASS_END_2.asItem());
                         entries.accept(ModBlocks.PSD_TOP.asItem());
+                        entries.accept(ModBlocks.TICKET_BARRIER_ENTRANCE.asItem());
+                        entries.accept(ModBlocks.TICKET_BARRIER_EXIT.asItem());
                     })
                     .build()
     );

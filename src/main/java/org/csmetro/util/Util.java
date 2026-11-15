@@ -16,8 +16,7 @@ public class Util {
         for (int i = 0; i < 2; i++) {
             BlockPos topPos = pos.above(2 + i);
             if (world.getBlockState(topPos).isAir()) {
-                BlockState defaultTop = ModBlocks.PSD_TOP.defaultBlockState()
-                        .setValue(BlockPSDTop.HALF, i == 0 ? DoubleBlockHalf.LOWER : DoubleBlockHalf.UPPER);
+                BlockState defaultTop = ModBlocks.PSD_TOP.defaultBlockState().setValue(BlockPSDTop.HALF, i == 0 ? DoubleBlockHalf.LOWER : DoubleBlockHalf.UPPER);
                 world.setBlock(topPos, defaultTop, 3);
 
                 BlockState actualTop = BlockPSDTop.getActualState(world, topPos);
@@ -30,9 +29,8 @@ public class Util {
         void setItem(Item item);
     }
 
-    public static <T> T register(Registry<T> registry, String name, T object) {
+    public static <T> void register(Registry<T> registry, String name, T object) {
         ResourceLocation id = new ResourceLocation(CSMetro.MOD_ID, name);
         Registry.register(registry, id, object);
-        return object;
     }
 }

@@ -1,4 +1,4 @@
-{
+﻿{
   "block.csmetro.apg_door": "APG Door",
   "block.csmetro.apg_glass": "APG Glass",
   "block.csmetro.apg_glass_end": "APG Glass End",
@@ -9,5 +9,7 @@
   "block.csmetro.psd_glass_end_1": "PSD Glass End",
   "block.csmetro.psd_glass_end_2": "PSD Glass End (Style 2)",
   "block.csmetro.psd_top": "PSD Top",
+  "block.csmetro.ticket_barrier_entrance": "Ticket Barrier (Entrance)",
+  "block.csmetro.ticket_barrier_exit": "Ticket Barrier (Exit)",
   "itemGroup.csmetro.main": "Changsha Metro"
 }

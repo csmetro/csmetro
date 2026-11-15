@@ -1,0 +1,7 @@
+﻿{
+	"parent": "item/generated",
+	"textures": {
+		"layer0": "csmetro:item/ticket_barrier_exit"
+	}
+}
+

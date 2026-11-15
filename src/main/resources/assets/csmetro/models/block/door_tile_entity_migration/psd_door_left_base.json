@@ -1,7 +1,7 @@
-{
+﻿{
 	"parent": "block/block",
 	"textures": {
-		"black": "mtr:block/black"
+		"black": "csmetro:block/black"
 	},
 	"elements": [
 		{

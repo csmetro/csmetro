@@ -1,0 +1,10 @@
+﻿{
+	"parent": "csmetro:block/ticket_barrier_base",
+	"textures": {
+		"color": "block/orange_concrete",
+		"yellow_glass_off": "block/yellow_stained_glass",
+		"yellow_glass_on": "csmetro:block/transparent",
+		"sign": "csmetro:block/sign/arrow_up"
+	}
+}
+

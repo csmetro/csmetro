@@ -1,6 +1,7 @@
-{
+﻿{
 	"parent": "item/generated",
 	"textures": {
-		"layer0": "mtr:item/psd_glass_1"
+		"layer0": "csmetro:item/psd_glass_1"
 	}
 }
+

@@ -25,5 +25,7 @@ public class CSMetroClient implements ClientModInitializer {
 		BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.PSD_GLASS_2, RenderType.cutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.PSD_GLASS_END_1, RenderType.cutout());
 		BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.PSD_GLASS_END_2, RenderType.cutout());
+		BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.TICKET_BARRIER_ENTRANCE, RenderType.cutout());
+		BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.TICKET_BARRIER_EXIT, RenderType.cutout());
 	}
 }
