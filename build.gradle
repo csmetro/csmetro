@@ -15,9 +15,9 @@ repositories {
 			includeGroup "maven.modrinth"
 		}
 	}
-	maven { url 'https://repository.hanbings.io/proxy' }
-	maven { url 'https://bmclapi2.bangbang93.com/maven/' }
-	maven { url 'https://lss233.littleservice.cn/repositories/minecraft' }
+	maven { url = uri('https://repository.hanbings.io/proxy') }
+	maven { url = uri('https://bmclapi2.bangbang93.com/maven/') }
+	maven { url = uri('https://lss233.littleservice.cn/repositories/minecraft') }
 }
 
 loom {
@@ -50,7 +50,7 @@ processResources {
 }
 
 tasks.withType(JavaCompile).configureEach {
-	it.options.release = 25
+	it.options.release = 17
 }
 
 java {
@@ -59,8 +59,8 @@ java {
 	// If you remove this line, sources will not be generated.
 	withSourcesJar()
 
-	sourceCompatibility = JavaVersion.VERSION_25
-	targetCompatibility = JavaVersion.VERSION_25
+	sourceCompatibility = JavaVersion.VERSION_17
+	targetCompatibility = JavaVersion.VERSION_17
 }
 
 jar {

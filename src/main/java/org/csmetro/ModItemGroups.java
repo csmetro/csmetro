@@ -17,7 +17,7 @@ public class ModItemGroups {
             FabricItemGroup.builder()
                     .icon(() -> new ItemStack(ModBlocks.APG_DOOR))
                     .title(Component.translatable("itemGroup.csmetro.main"))
-                    .displayItems((_, entries) -> {
+                    .displayItems((itemGroupDisplayContext, entries) -> {
                         entries.accept(ModBlocks.APG_DOOR.asItem());
                         entries.accept(ModBlocks.APG_GLASS.asItem());
                         entries.accept(ModBlocks.APG_GLASS_END.asItem());
