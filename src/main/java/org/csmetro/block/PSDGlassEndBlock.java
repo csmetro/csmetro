@@ -1,17 +1,19 @@
 package org.csmetro.block;
 
-import mtr.block.BlockAPGGlass;
+import mtr.block.BlockPSDGlassEnd;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import org.csmetro.util.Util;
+import org.csmetro.Util;
 import org.jetbrains.annotations.NotNull;
 
-public class MyAPGGlass extends BlockAPGGlass implements Util.HasItem {
+public class PSDGlassEndBlock extends BlockPSDGlassEnd implements Util.HasItem {
     private Item item;
+
+    public PSDGlassEndBlock(int style) { super(style); }
 
     @Override
     public void setItem(Item item) {

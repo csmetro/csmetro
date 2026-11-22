@@ -1,4 +1,4 @@
-package org.csmetro.util;
+package org.csmetro;
 
 import mtr.block.BlockPSDTop;
 import net.minecraft.core.BlockPos;
@@ -8,7 +8,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
-import org.csmetro.CSMetro;
 import org.csmetro.block.ModBlocks;
 
 public class Util {

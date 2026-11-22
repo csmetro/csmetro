@@ -26,8 +26,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.properties.DoubleBlockHalf;
 
-public class CustomPSDRenderer<T extends BlockPSDAPGDoorBase.TileEntityPSDAPGDoorBase> extends BlockEntityRendererMapper<T> implements IGui, IBlock {
-
+public class PSDRenderer<T extends BlockPSDAPGDoorBase.TileEntityPSDAPGDoorBase> extends BlockEntityRendererMapper<T> implements IGui, IBlock {
     private final int type;
     private static final ModelSingleCube MODEL_PSD = new ModelSingleCube(36, 18, 0, 0, 0, 16, 16, 2);
     private static final ModelSingleCube MODEL_PSD_END_LEFT_1 = new ModelSingleCube(20, 18, 0, 0, 0, 8, 16, 2);
@@ -44,7 +43,7 @@ public class CustomPSDRenderer<T extends BlockPSDAPGDoorBase.TileEntityPSDAPGDoo
     private static final ModelSingleCube MODEL_LIFT_LEFT = new ModelSingleCube(28, 18, 0, 0, 0, 12, 16, 2);
     private static final ModelSingleCube MODEL_LIFT_RIGHT = new ModelSingleCube(28, 18, 4, 0, 0, 12, 16, 2);
 
-    public CustomPSDRenderer(BlockEntityRenderDispatcher dispatcher, int type) {
+    public PSDRenderer(BlockEntityRenderDispatcher dispatcher, int type) {
         super(dispatcher);
         this.type = type;
     }

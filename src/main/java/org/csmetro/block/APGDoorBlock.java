@@ -1,21 +1,19 @@
 package org.csmetro.block;
 
-import mtr.block.BlockPSDGlass;
+import mtr.block.BlockAPGDoor;
+import mtr.mappings.BlockEntityMapper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import org.csmetro.util.Util;
+import org.csmetro.block.entity.APGDoorEntity;
+import org.csmetro.Util;
 import org.jetbrains.annotations.NotNull;
 
-public class MyPSDGlass extends BlockPSDGlass implements Util.HasItem {
+public class APGDoorBlock extends BlockAPGDoor implements Util.HasItem {
     private Item item;
-
-    public MyPSDGlass(int style) {
-        super(style);
-    }
 
     @Override
     public void setItem(Item item) {
@@ -25,6 +23,11 @@ public class MyPSDGlass extends BlockPSDGlass implements Util.HasItem {
     @Override
     public @NotNull Item asItem() {
         return item;
+    }
+
+    @Override
+    public BlockEntityMapper createBlockEntity(BlockPos pos, BlockState state) {
+        return new APGDoorEntity(pos, state);
     }
 
     @Override

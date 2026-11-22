@@ -8,8 +8,8 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import org.csmetro.util.Util;
-import org.csmetro.block.entity.MyPSDDoorEntity;
+import org.csmetro.Util;
+import org.csmetro.block.entity.PSDDoorEntity;
 import org.jetbrains.annotations.NotNull;
 
 public class MyPSDDoor extends BlockPSDDoor implements Util.HasItem {
@@ -31,7 +31,7 @@ public class MyPSDDoor extends BlockPSDDoor implements Util.HasItem {
 
     @Override
     public BlockEntityMapper createBlockEntity(BlockPos pos, BlockState state) {
-        return new MyPSDDoorEntity(pos, state);
+        return new PSDDoorEntity(pos, state);
     }
 
     @Override

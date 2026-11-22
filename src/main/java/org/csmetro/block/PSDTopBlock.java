@@ -5,10 +5,10 @@ import mtr.mappings.BlockEntityMapper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.state.BlockState;
-import org.csmetro.util.Util;
+import org.csmetro.Util;
 import org.jetbrains.annotations.NotNull;
 
-public class MyPSDTop extends BlockPSDTop implements Util.HasItem {
+public class PSDTopBlock extends BlockPSDTop implements Util.HasItem {
     private Item item;
 
     @Override
